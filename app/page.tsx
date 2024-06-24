@@ -15,7 +15,7 @@ export default function Home() {
         to many households.
       </p>
       <div className="py-4">
-        <PIcon name="academic-cap" />
+        <PIcon />
       </div>
       <PButton>get started</PButton>
     </div>

@@ -5,7 +5,13 @@ type IconType = {
   [key: string]: React.ComponentType<React.ComponentProps<"svg">>;
 };
 
-export default function PIcon({ name }: { name: string }) {
+export default function PIcon({
+  name = "home",
+  size = "24",
+}: {
+  name: string;
+  size: string;
+}) {
   const componentName =
     name
       .split("-")
@@ -15,7 +21,7 @@ export default function PIcon({ name }: { name: string }) {
   const IconComponent = (Icons as IconType)[componentName];
 
   if (!IconComponent) {
-    return <div>Icon not found: {name}</div>;
+    return <div>Icon Error</div>;
   }
 
   return (
