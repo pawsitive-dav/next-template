@@ -8,11 +8,12 @@ type IconType = {
 }
 
 type SizeType = '4' | '5' | '6' | '8' | '10' | '12' | '16' | '20' | '24'
+type ColorsType = 'normal' | 'primary' | 'info' | 'success' | 'warning' | 'error' | 'white'
 
 type PIconProps = {
   name?: string
   size?: SizeType
-  color?: string
+  color?: ColorsType
   spin?: boolean
 }
 
@@ -28,10 +29,20 @@ const sizeClasses: { [key in SizeType]: string } = {
   '24': 'w-24 h-24'
 }
 
+const colorsClasses: { [key in ColorsType]: string } = {
+  normal: 'text-normal',
+  primary: 'text-primary',
+  info: 'text-info',
+  success: 'text-success',
+  warning: 'text-warning',
+  error: 'text-error',
+  white: 'text-white'
+}
+
 export default function PIcon({
   name = 'home',
   size = '6',
-  color = 'black',
+  color = 'normal',
   spin = false
 }: PIconProps) {
   const componentName =
@@ -47,11 +58,11 @@ export default function PIcon({
   }
 
   const widthHeightClass = sizeClasses[size]
+  const colorsClass = colorsClasses[color]
 
-  // กำหนดเงื่อนไขในการใช้งาน spin
   const iconClassName = spin
-    ? `${widthHeightClass} text-${color} animate-spin`
-    : `${widthHeightClass} text-${color}`
+    ? `${widthHeightClass} ${colorsClass} animate-spin`
+    : `${widthHeightClass} ${colorsClass}`
 
   return <IconComponent className={iconClassName} />
 }
