@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import PIcon from '../Ui/PIcon'
 
 export default function DarkModeButton() {
   const [theme, setTheme] = useState('light')
@@ -20,9 +21,9 @@ export default function DarkModeButton() {
   return (
     <button
       onClick={toggleTheme}
-      className='px-4 py-2 rounded-md bg-gray-800 text-white dark:bg-gray-200 dark:text-black'
+      className='p-2 rounded-md bg-gray-700 text-white dark:bg-gray-200 dark:text-black'
     >
-      {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+      {theme === 'dark' ? <PIcon name='sun' /> : <PIcon name='moon' color='white' />}
     </button>
   )
 }
