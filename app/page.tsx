@@ -73,6 +73,78 @@ export default function Page() {
             Error
           </PButton>
         </div>
+        <div className='flex items-center space-x-4'>
+          <PButton loading>Normal</PButton>
+          <PButton color='primary' loading>
+            Primary
+          </PButton>
+          <PButton color='info' loading>
+            Info
+          </PButton>
+          <PButton color='success' loading>
+            Success
+          </PButton>
+          <PButton color='warning' loading>
+            Warning
+          </PButton>
+          <PButton color='error' loading>
+            Error
+          </PButton>
+        </div>
+        <div className='flex items-center space-x-4'>
+          <PButton variant='outline'>Normal</PButton>
+          <PButton color='primary' variant='outline'>
+            Primary
+          </PButton>
+          <PButton color='info' variant='outline'>
+            Info
+          </PButton>
+          <PButton color='success' variant='outline'>
+            Success
+          </PButton>
+          <PButton color='warning' variant='outline'>
+            Warning
+          </PButton>
+          <PButton color='error' variant='outline'>
+            Error
+          </PButton>
+        </div>
+        <div className='flex items-center space-x-4'>
+          <PButton variant='soft'>Normal</PButton>
+          <PButton color='primary' variant='soft'>
+            Primary
+          </PButton>
+          <PButton color='info' variant='soft'>
+            Info
+          </PButton>
+          <PButton color='success' variant='soft'>
+            Success
+          </PButton>
+          <PButton color='warning' variant='soft'>
+            Warning
+          </PButton>
+          <PButton color='error' variant='soft'>
+            Error
+          </PButton>
+        </div>
+        <div className='flex items-center space-x-4'>
+          <PButton variant='text'>Normal</PButton>
+          <PButton color='primary' variant='text'>
+            Primary
+          </PButton>
+          <PButton color='info' variant='text'>
+            Info
+          </PButton>
+          <PButton color='success' variant='text'>
+            Success
+          </PButton>
+          <PButton color='warning' variant='text'>
+            Warning
+          </PButton>
+          <PButton color='error' variant='text'>
+            Error
+          </PButton>
+        </div>
       </div>
 
       <section className='h-[1000px]'>

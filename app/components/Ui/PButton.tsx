@@ -31,9 +31,16 @@ const getClasses = (
     lg: loading ? 'pl-4 cursor-not-allowed' : '',
   }
 
-  const colorHover = !disabled ? 'hover:bg-opacity-90 hover:dark:bg-opacity-70' : ''
+  const colorHover = !disabled && !loading ? 'hover:bg-opacity-90 hover:dark:bg-opacity-70' : ''
   const colorClasses = {
-    normal: `bg-normal text-white dark:bg-gray-50 dark:text-normal ${colorHover}`,
+    normal:
+      variant === 'solid'
+        ? `bg-normal text-white dark:bg-gray-50 dark:text-normal ${colorHover}`
+        : variant === 'outline'
+        ? `bg-normal bg-opacity-0 border-2 border-normal text-normal dark:border-white dark:text-white ${colorHover}`
+        : variant === 'soft'
+        ? 'bg-normal bg-opacity-10 text-normal'
+        : '',
     primary: `bg-primary text-white ${colorHover}`,
     info: `bg-info text-white ${colorHover}`,
     success: `bg-success text-white ${colorHover}`,
@@ -74,7 +81,7 @@ export default function PButton({
   return (
     <button
       className={`${mainClass} ${transitionClass} ${colorClass} ${sizeClass} ${loadingClass} ${disabledClasses}`}
-      disabled={disabled}
+      disabled={disabled || loading}
     >
       <div className={`${iconVisibilityClass} mr-2`}>
         <PIcon name={'arrow-path'} size={'6'} color={'white'} spin />
