@@ -8,9 +8,17 @@ type PButtonProps = {
   disabled?: boolean
   loading?: boolean
   size?: 'sm' | 'md' | 'lg'
+  variant?: 'solid' | 'outline' | 'soft' | 'text'
+  color?: 'normal' | 'primary' | 'info' | 'success' | 'warning' | 'error' | 'white'
 }
 
-const getSizeClasses = (size: 'sm' | 'md' | 'lg', loading: boolean) => {
+const getClasses = (
+  variant: 'solid' | 'outline' | 'soft' | 'text',
+  size: 'sm' | 'md' | 'lg',
+  loading: boolean,
+  disabled: boolean,
+  color: 'normal' | 'primary' | 'info' | 'success' | 'warning' | 'error' | 'white'
+) => {
   const sizeClasses = {
     sm: 'h-8 px-3 text-sm',
     md: 'h-10 px-4 text-base',
@@ -18,38 +26,60 @@ const getSizeClasses = (size: 'sm' | 'md' | 'lg', loading: boolean) => {
   }
 
   const loadingClasses = {
-    sm: loading ? 'pl-2' : '',
-    md: loading ? 'pl-3' : '',
-    lg: loading ? 'pl-4' : '',
+    sm: loading ? 'pl-2 cursor-not-allowed' : '',
+    md: loading ? 'pl-3 cursor-not-allowed' : '',
+    lg: loading ? 'pl-4 cursor-not-allowed' : '',
   }
+
+  const colorHover = !disabled ? 'hover:bg-opacity-90 hover:dark:bg-opacity-70' : ''
+  const colorClasses = {
+    normal: `bg-normal text-white dark:bg-gray-50 dark:text-normal ${colorHover}`,
+    primary: `bg-primary text-white ${colorHover}`,
+    info: `bg-info text-white ${colorHover}`,
+    success: `bg-success text-white ${colorHover}`,
+    warning: `bg-warning text-white ${colorHover}`,
+    error: `bg-error text-white ${colorHover}`,
+    white: `bg-white text-normal ${colorHover}`,
+  }
+
+  const disabledClasses = disabled ? 'opacity-60 cursor-not-allowed' : ''
 
   return {
     sizeClass: sizeClasses[size],
     loadingClass: loadingClasses[size],
+    colorClass: colorClasses[color],
+    disabledClasses: disabledClasses,
   }
 }
 
 export default function PButton({
   children,
+  variant = 'solid',
   disabled = false,
   loading = false,
   size = 'md',
+  color = 'normal',
 }: PButtonProps) {
-  const { sizeClass, loadingClass } = getSizeClasses(size, loading)
+  const { sizeClass, loadingClass, colorClass, disabledClasses } = getClasses(
+    variant,
+    size,
+    loading,
+    disabled,
+    color
+  )
+  const mainClass = 'flex items-center justify-center rounded-md'
+  const transitionClass = 'transition duration-300 ease-in-out'
+  const iconVisibilityClass = loading ? 'block' : 'hidden'
 
   return (
     <button
-      className={`flex items-center justify-center rounded-md 
-        bg-blue-500 hover:bg-blue-700 text-white transition duration-300 ease-in-out
-        ${sizeClass} ${loadingClass} 
-        ${disabled ? 'opacity-60 cursor-not-allowed' : ''}
-      `}
+      className={`${mainClass} ${transitionClass} ${colorClass} ${sizeClass} ${loadingClass} ${disabledClasses}`}
       disabled={disabled}
     >
-      <div className={`${loading ? 'block' : 'hidden'} mr-2`}>
+      <div className={`${iconVisibilityClass} mr-2`}>
         <PIcon name={'arrow-path'} size={'6'} color={'white'} spin />
       </div>
-      {children}
+      <div className='leading-none font-medium'>{children}</div>
     </button>
   )
 }

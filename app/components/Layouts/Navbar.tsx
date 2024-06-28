@@ -32,8 +32,8 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed w-full bg-white bg-opacity-5 ${
-        scrolled ? 'bg-opacity-100 bg-white dark:bg-gray-900 shadow' : ''
+      className={`fixed w-full ${
+        scrolled ? 'bg-white bg-opacity-100 shadow dark:bg-gray-900' : 'bg-white bg-opacity-5'
       }`}
     >
       <div className='container mx-auto flex justify-between items-center h-[60px]'>
@@ -58,7 +58,7 @@ export default function Navbar() {
         </div>
         <div className='flex items-center space-x-2'>
           <DarkModeButton />
-          <PButton>Sign In</PButton>
+          <PButton color='primary'>Sign In</PButton>
         </div>
       </div>
     </nav>

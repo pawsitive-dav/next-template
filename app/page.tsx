@@ -20,10 +20,59 @@ export default function Page() {
         </div>
       </section>
 
-      <div className='flex space-x-4 items-center justify-center py-10'>
-        <PButton size='sm'>Small</PButton>
-        <PButton size='md'>Default</PButton>
-        <PButton size='lg'>Large</PButton>
+      <div className='flex flex-col space-y-4 items-center justify-center py-10'>
+        <div className='text-title font-semibold'>Button Size</div>
+        <div className='flex items-center space-x-4'>
+          <PButton size='sm' loading>
+            Small
+          </PButton>
+          <PButton size='md' loading>
+            Default
+          </PButton>
+          <PButton size='lg' loading>
+            Large
+          </PButton>
+        </div>
+        <div className='text-title font-semibold'>Button Loading</div>
+        <div className='flex items-center space-x-4'>
+          <PButton size='sm' disabled>
+            Small
+          </PButton>
+          <PButton size='md' disabled>
+            Default
+          </PButton>
+          <PButton size='lg' disabled>
+            Large
+          </PButton>
+        </div>
+
+        <div className='text-title font-semibold'>Button Colors</div>
+        <div className='flex items-center space-x-4'>
+          <PButton>Normal</PButton>
+          <PButton color='primary'>Primary</PButton>
+          <PButton color='info'>Info</PButton>
+          <PButton color='success'>Success</PButton>
+          <PButton color='warning'>Warning</PButton>
+          <PButton color='error'>Error</PButton>
+        </div>
+        <div className='flex items-center space-x-4'>
+          <PButton disabled>Normal</PButton>
+          <PButton color='primary' disabled>
+            Primary
+          </PButton>
+          <PButton color='info' disabled>
+            Info
+          </PButton>
+          <PButton color='success' disabled>
+            Success
+          </PButton>
+          <PButton color='warning' disabled>
+            Warning
+          </PButton>
+          <PButton color='error' disabled>
+            Error
+          </PButton>
+        </div>
       </div>
 
       <section className='h-[1000px]'>

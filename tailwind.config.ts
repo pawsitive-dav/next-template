@@ -1,11 +1,12 @@
 import type { Config } from 'tailwindcss'
 
 const baseColors = {
-  primary: '#3b82f6',
+  primary: '#1e40af',
   info: '#0ea5e9',
-  success: '#10b981',
-  warning: '#eab308',
-  error: '#ef4444'
+  success: '#059669',
+  warning: '#fbbf24',
+  error: '#ef4444',
+  normal: '#1f2937'
 }
 
 const textColor = {
