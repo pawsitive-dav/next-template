@@ -7,6 +7,11 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
+  const uiControl = {
+    loading: true,
+    disabled: false,
+  }
+
   return (
     <>
       <section className='bg-blue-600 py-[120px]'>
@@ -21,146 +26,163 @@ export default function Page() {
       </section>
 
       <div className='flex flex-col space-y-4 items-center justify-center py-10'>
-        <div className='text-title font-semibold'>Button Size</div>
+        <div className='text-title font-semibold'>Button Test</div>
         <div className='flex items-center space-x-4'>
-          <PButton size='sm' loading>
-            Small
+          <PButton disabled={uiControl.disabled} loading={uiControl.loading}>
+            Normal
           </PButton>
-          <PButton size='md' loading>
-            Default
-          </PButton>
-          <PButton size='lg' loading>
-            Large
-          </PButton>
-        </div>
-        <div className='text-title font-semibold'>Button Loading</div>
-        <div className='flex items-center space-x-4'>
-          <PButton size='sm' disabled>
-            Small
-          </PButton>
-          <PButton size='md' disabled>
-            Default
-          </PButton>
-          <PButton size='lg' disabled>
-            Large
-          </PButton>
-        </div>
-
-        <div className='text-title font-semibold'>Button Colors</div>
-        <div className='flex items-center space-x-4'>
-          <PButton>Normal</PButton>
-          <PButton color='primary'>Primary</PButton>
-          <PButton color='info'>Info</PButton>
-          <PButton color='success'>Success</PButton>
-          <PButton color='warning'>Warning</PButton>
-          <PButton color='error'>Error</PButton>
-        </div>
-        <div className='flex items-center space-x-4'>
-          <PButton disabled>Normal</PButton>
-          <PButton color='primary' disabled>
+          <PButton color='primary' disabled={uiControl.disabled} loading={uiControl.loading}>
             Primary
           </PButton>
-          <PButton color='info' disabled>
+          <PButton color='info' disabled={uiControl.disabled} loading={uiControl.loading}>
             Info
           </PButton>
-          <PButton color='success' disabled>
+          <PButton color='success' disabled={uiControl.disabled} loading={uiControl.loading}>
             Success
           </PButton>
-          <PButton color='warning' disabled>
+          <PButton color='warning' disabled={uiControl.disabled} loading={uiControl.loading}>
             Warning
           </PButton>
-          <PButton color='error' disabled>
+          <PButton color='error' disabled={uiControl.disabled} loading={uiControl.loading}>
             Error
           </PButton>
         </div>
         <div className='flex items-center space-x-4'>
-          <PButton loading>Normal</PButton>
-          <PButton color='primary' loading>
+          <PButton variant='outline' disabled={uiControl.disabled} loading={uiControl.loading}>
+            Normal
+          </PButton>
+          <PButton
+            color='primary'
+            variant='outline'
+            disabled={uiControl.disabled}
+            loading={uiControl.loading}
+          >
             Primary
           </PButton>
-          <PButton color='info' loading>
+          <PButton
+            color='info'
+            variant='outline'
+            disabled={uiControl.disabled}
+            loading={uiControl.loading}
+          >
             Info
           </PButton>
-          <PButton color='success' loading>
+          <PButton
+            color='success'
+            variant='outline'
+            disabled={uiControl.disabled}
+            loading={uiControl.loading}
+          >
             Success
           </PButton>
-          <PButton color='warning' loading>
+          <PButton
+            color='warning'
+            variant='outline'
+            disabled={uiControl.disabled}
+            loading={uiControl.loading}
+          >
             Warning
           </PButton>
-          <PButton color='error' loading>
+          <PButton
+            color='error'
+            variant='outline'
+            disabled={uiControl.disabled}
+            loading={uiControl.loading}
+          >
             Error
           </PButton>
         </div>
         <div className='flex items-center space-x-4'>
-          <PButton variant='outline'>Normal</PButton>
-          <PButton color='primary' variant='outline'>
+          <PButton variant='soft' disabled={uiControl.disabled} loading={uiControl.loading}>
+            Normal
+          </PButton>
+          <PButton
+            color='primary'
+            variant='soft'
+            disabled={uiControl.disabled}
+            loading={uiControl.loading}
+          >
             Primary
           </PButton>
-          <PButton color='info' variant='outline'>
+          <PButton
+            color='info'
+            variant='soft'
+            disabled={uiControl.disabled}
+            loading={uiControl.loading}
+          >
             Info
           </PButton>
-          <PButton color='success' variant='outline'>
+          <PButton
+            color='success'
+            variant='soft'
+            disabled={uiControl.disabled}
+            loading={uiControl.loading}
+          >
             Success
           </PButton>
-          <PButton color='warning' variant='outline'>
+          <PButton
+            color='warning'
+            variant='soft'
+            disabled={uiControl.disabled}
+            loading={uiControl.loading}
+          >
             Warning
           </PButton>
-          <PButton color='error' variant='outline'>
+          <PButton
+            color='error'
+            variant='soft'
+            disabled={uiControl.disabled}
+            loading={uiControl.loading}
+          >
             Error
           </PButton>
         </div>
         <div className='flex items-center space-x-4'>
-          <PButton variant='soft'>Normal</PButton>
-          <PButton color='primary' variant='soft'>
+          <PButton variant='text' disabled={uiControl.disabled} loading={uiControl.loading}>
+            Normal
+          </PButton>
+          <PButton
+            color='primary'
+            variant='text'
+            disabled={uiControl.disabled}
+            loading={uiControl.loading}
+          >
             Primary
           </PButton>
-          <PButton color='info' variant='soft'>
+          <PButton
+            color='info'
+            variant='text'
+            disabled={uiControl.disabled}
+            loading={uiControl.loading}
+          >
             Info
           </PButton>
-          <PButton color='success' variant='soft'>
+          <PButton
+            color='success'
+            variant='text'
+            disabled={uiControl.disabled}
+            loading={uiControl.loading}
+          >
             Success
           </PButton>
-          <PButton color='warning' variant='soft'>
+          <PButton
+            color='warning'
+            variant='text'
+            disabled={uiControl.disabled}
+            loading={uiControl.loading}
+          >
             Warning
           </PButton>
-          <PButton color='error' variant='soft'>
-            Error
-          </PButton>
-        </div>
-        <div className='flex items-center space-x-4'>
-          <PButton variant='text'>Normal</PButton>
-          <PButton color='primary' variant='text'>
-            Primary
-          </PButton>
-          <PButton color='info' variant='text'>
-            Info
-          </PButton>
-          <PButton color='success' variant='text'>
-            Success
-          </PButton>
-          <PButton color='warning' variant='text'>
-            Warning
-          </PButton>
-          <PButton color='error' variant='text'>
+          <PButton
+            color='error'
+            variant='text'
+            disabled={uiControl.disabled}
+            loading={uiControl.loading}
+          >
             Error
           </PButton>
         </div>
       </div>
-
-      <section className='h-[1000px]'>
-        <div className='container p-6 text-base'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt necessitatibus voluptates
-          officia itaque, earum ex cumque! Maiores incidunt laboriosam repellat a necessitatibus
-          numquam omnis totam repellendus? Dignissimos facilis minima accusantium eligendi natus. Ab
-          optio, deserunt debitis natus vitae aspernatur perspiciatis repellendus doloremque
-          perferendis iusto, fugit et corporis repudiandae itaque, cupiditate recusandae possimus
-          delectus voluptate dolorem? Mollitia, eligendi? A fuga voluptatibus ipsam! Nemo optio
-          ipsum modi tempora cumque natus consectetur impedit dolorem quibusdam obcaecati hic
-          aliquam accusamus sapiente odit, ab sequi quam fugiat aliquid doloremque qui voluptas.
-          Corporis placeat ex modi excepturi iusto reiciendis quos, veritatis hic aliquid porro,
-          natus incidunt?
-        </div>
-      </section>
     </>
   )
 }

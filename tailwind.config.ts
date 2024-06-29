@@ -9,10 +9,6 @@ const baseColors = {
   normal: '#1f2937'
 }
 
-const textColor = {
-  normal: '#1f2937'
-}
-
 const baseFontSize = {
   overline: '0.75rem',
   caption: '0.875rem',
@@ -35,8 +31,7 @@ const config: Config = {
         ...baseFontSize
       },
       textColor: {
-        ...baseColors,
-        ...textColor
+        ...baseColors
       },
       backgroundColor: {
         ...baseColors
@@ -44,9 +39,8 @@ const config: Config = {
       borderColor: {
         ...baseColors
       },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
+      ringColor : {
+        ...baseColors
       }
     },
     container: {

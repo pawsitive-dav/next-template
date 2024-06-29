@@ -32,7 +32,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed w-full ${
+      className={`fixed w-full z-20 ${
         scrolled ? 'bg-white bg-opacity-100 shadow dark:bg-gray-900' : 'bg-white bg-opacity-5'
       }`}
     >

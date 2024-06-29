@@ -26,7 +26,7 @@ const sizeClasses: { [key in SizeType]: string } = {
   '12': 'w-12 h-12',
   '16': 'w-16 h-16',
   '20': 'w-20 h-20',
-  '24': 'w-24 h-24'
+  '24': 'w-24 h-24',
 }
 
 const colorsClasses: { [key in ColorsType]: string } = {
@@ -36,14 +36,14 @@ const colorsClasses: { [key in ColorsType]: string } = {
   success: 'text-success',
   warning: 'text-warning',
   error: 'text-error',
-  white: 'text-white'
+  white: 'text-white dark:text-normal',
 }
 
 export default function PIcon({
   name = 'home',
   size = '6',
   color = 'normal',
-  spin = false
+  spin = false,
 }: PIconProps) {
   const componentName =
     name

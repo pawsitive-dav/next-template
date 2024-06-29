@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import StoreProvider from './store/StoreProvider'
 import './assets/css/globals.css'
 import Navbar from './components/Layouts/Navbar'
 import Footer from './components/Layouts/Footer'
@@ -22,7 +23,9 @@ export default function RootLayout({
         className={`flex flex-col h-screen bg-gray-50 text-narmal dark:bg-gray-800 dark:text-white ${inter.className}`}
       >
         <Navbar />
-        <main className='flex-1'>{children}</main>
+        <main className='flex-1'>
+          <StoreProvider>{children}</StoreProvider>
+        </main>
         <Footer />
       </body>
     </html>

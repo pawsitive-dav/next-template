@@ -1,6 +1,9 @@
 'use client'
 
 import React from 'react'
+import { useAtom } from 'jotai'
+import { themeAtom } from '@/app/store/themeAtom'
+
 import PIcon from './PIcon'
 
 type PButtonProps = {
@@ -9,7 +12,7 @@ type PButtonProps = {
   loading?: boolean
   size?: 'sm' | 'md' | 'lg'
   variant?: 'solid' | 'outline' | 'soft' | 'text'
-  color?: 'normal' | 'primary' | 'info' | 'success' | 'warning' | 'error' | 'white'
+  color?: 'normal' | 'primary' | 'info' | 'success' | 'warning' | 'error'
 }
 
 const getClasses = (
@@ -17,7 +20,7 @@ const getClasses = (
   size: 'sm' | 'md' | 'lg',
   loading: boolean,
   disabled: boolean,
-  color: 'normal' | 'primary' | 'info' | 'success' | 'warning' | 'error' | 'white'
+  color: 'normal' | 'primary' | 'info' | 'success' | 'warning' | 'error'
 ) => {
   const sizeClasses = {
     sm: 'h-8 px-3 text-sm',
@@ -31,30 +34,66 @@ const getClasses = (
     lg: loading ? 'pl-4 cursor-not-allowed' : '',
   }
 
-  const colorHover = !disabled && !loading ? 'hover:bg-opacity-90 hover:dark:bg-opacity-70' : ''
-  const colorClasses = {
-    normal:
-      variant === 'solid'
-        ? `bg-normal text-white dark:bg-gray-50 dark:text-normal ${colorHover}`
-        : variant === 'outline'
-        ? `bg-normal bg-opacity-0 border-2 border-normal text-normal dark:border-white dark:text-white ${colorHover}`
-        : variant === 'soft'
-        ? 'bg-normal bg-opacity-10 text-normal'
-        : '',
-    primary: `bg-primary text-white ${colorHover}`,
-    info: `bg-info text-white ${colorHover}`,
-    success: `bg-success text-white ${colorHover}`,
-    warning: `bg-warning text-white ${colorHover}`,
-    error: `bg-error text-white ${colorHover}`,
-    white: `bg-white text-normal ${colorHover}`,
+  const hoverClasses = {
+    solid: 'hover:bg-opacity-80 hover:dark:bg-opacity-70',
+    outline: `hover:bg-opacity-100 hover:text-white dark:hover:brightness-100 dark:hover:bg-opacity-100 ${
+      color === 'normal' ? 'hover:dark:text-normal' : ''
+    }`,
+    soft: `hover:bg-opacity-100 hover:text-white dark:hover:bg-opacity-100 dark:hover:dark:brightness-100 ${
+      color === 'normal' ? 'hover:dark:text-normal' : ''
+    }`,
+    text: `hover:bg-opacity-10 dark:hover:bg-opacity-10 ${
+      color === 'normal' ? 'dark:hover:bg-white' : ''
+    }`,
   }
 
-  const disabledClasses = disabled ? 'opacity-60 cursor-not-allowed' : ''
+  const colorHover = !disabled && !loading ? hoverClasses[variant] : ''
+
+  const colorVariants = {
+    normal: {
+      solid: `bg-normal text-white dark:bg-gray-50 dark:text-normal ${colorHover}`,
+      outline: `bg-normal bg-opacity-0 ring-1 ring-ofset-0 ring-normal text-normal dark:bg-white dark:bg-opacity-0 dark:ring-white dark:text-white ${colorHover}`,
+      soft: `bg-normal bg-opacity-5 text-normal dark:text-white dark:bg-white dark:bg-opacity-10 ${colorHover}`,
+      text: `bg-normal bg-opacity-0 text-normal dark:text-white ${colorHover}`,
+    },
+    primary: {
+      solid: `bg-primary text-white ${colorHover}`,
+      outline: `bg-primary bg-opacity-0 ring-1 ring-ofset-0 ring-primary text-primary dark:brightness-150 ${colorHover}`,
+      soft: `bg-primary bg-opacity-5 text-primary dark:bg-opacity-10 dark:brightness-150 ${colorHover}`,
+      text: `bg-primary bg-opacity-0 text-primary dark:brightness-150 ${colorHover}`,
+    },
+    info: {
+      solid: `bg-info text-white ${colorHover}`,
+      outline: `bg-info bg-opacity-0 ring-1 ring-ofset-0 ring-info text-info ${colorHover}`,
+      soft: `bg-info bg-opacity-5 text-info ${colorHover}`,
+      text: `bg-info bg-opacity-0 text-info ${colorHover}`,
+    },
+    success: {
+      solid: `bg-success text-white ${colorHover}`,
+      outline: `bg-success bg-opacity-0 ring-1 ring-ofset-0 ring-success text-success ${colorHover}`,
+      soft: `bg-success bg-opacity-5 text-success ${colorHover}`,
+      text: `bg-success bg-opacity-0 text-success ${colorHover}`,
+    },
+    warning: {
+      solid: `bg-warning text-white ${colorHover}`,
+      outline: `bg-warning bg-opacity-0 ring-1 ring-ofset-0 ring-warning text-warning ${colorHover}`,
+      soft: `bg-warning bg-opacity-5 text-warning ${colorHover}`,
+      text: `bg-warning bg-opacity-0 text-warning ${colorHover}`,
+    },
+    error: {
+      solid: `bg-error text-white ${colorHover}`,
+      outline: `bg-error bg-opacity-0 ring-1 ring-ofset-0 ring-error text-error ${colorHover}`,
+      soft: `bg-error bg-opacity-5 text-error ${colorHover}`,
+      text: `bg-error bg-opacity-0 text-error ${colorHover}`,
+    },
+  }
+
+  const disabledClasses = disabled ? 'opacity-50 cursor-not-allowed' : ''
 
   return {
     sizeClass: sizeClasses[size],
     loadingClass: loadingClasses[size],
-    colorClass: colorClasses[color],
+    colorClass: colorVariants[color][variant],
     disabledClasses: disabledClasses,
   }
 }
@@ -74,9 +113,13 @@ export default function PButton({
     disabled,
     color
   )
+
+  const [theme] = useAtom(themeAtom)
+
   const mainClass = 'flex items-center justify-center rounded-md'
-  const transitionClass = 'transition duration-300 ease-in-out'
+  const transitionClass = 'transition duration-200'
   const iconVisibilityClass = loading ? 'block' : 'hidden'
+  const iconColor = variant === 'solid' ? 'white' : color
 
   return (
     <button
@@ -84,7 +127,7 @@ export default function PButton({
       disabled={disabled || loading}
     >
       <div className={`${iconVisibilityClass} mr-2`}>
-        <PIcon name={'arrow-path'} size={'6'} color={'white'} spin />
+        <PIcon name={'arrow-path'} size={'6'} color={iconColor} spin />
       </div>
       <div className='leading-none font-medium'>{children}</div>
     </button>
