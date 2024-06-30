@@ -36,7 +36,7 @@ const colorsClasses: { [key in ColorsType]: string } = {
   success: 'text-success',
   warning: 'text-warning',
   error: 'text-error',
-  white: 'text-white dark:text-normal',
+  white: 'text-white',
 }
 
 export default function PIcon({

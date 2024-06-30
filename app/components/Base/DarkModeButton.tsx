@@ -20,7 +20,6 @@ export default function DarkModeButton() {
     } else {
       document.documentElement.classList.remove('dark')
     }
-
     setTheme(storedTheme)
   }, [setTheme])
 

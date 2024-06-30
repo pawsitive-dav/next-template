@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
-import PButton from './components/Ui/PButton'
-import PIcon from './components/Ui/PIcon'
+import PButton from '@/app/components/Ui/PButton'
+import PIcon from '@/app/components/Ui/PIcon'
 
 export const metadata: Metadata = {
   title: 'Home',
@@ -16,8 +16,13 @@ export default function Page() {
     <>
       <section className='bg-blue-600 py-[120px]'>
         <div className='container flex flex-row space-x-6'>
-          <div className='basis-1/2 bg-gray-300'>
-            <div>BRILLIANCE IN EXECUTION</div>
+          <div className='basis-1/2'>
+            <div className='flex space-x-4'>
+              <PButton color='primary'>Get Started</PButton>
+              <PButton color='info' variant='outline'>
+                Free Try
+              </PButton>
+            </div>
           </div>
           <div className='basis-1/2 bg-gray-300'>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, maxime.

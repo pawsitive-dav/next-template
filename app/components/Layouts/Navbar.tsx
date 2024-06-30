@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import DarkModeButton from '../Base/DarkModeButton'
 import PButton from '../Ui/PButton'
 
 export default function Navbar() {
@@ -57,7 +56,6 @@ export default function Navbar() {
           </ul>
         </div>
         <div className='flex items-center space-x-2'>
-          <DarkModeButton />
           <PButton color='primary'>Sign In</PButton>
         </div>
       </div>

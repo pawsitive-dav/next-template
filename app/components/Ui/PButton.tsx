@@ -1,9 +1,6 @@
 'use client'
 
-import React from 'react'
-import { useAtom } from 'jotai'
-import { themeAtom } from '@/app/store/themeAtom'
-
+import React, { useState, useEffect } from 'react'
 import PIcon from './PIcon'
 
 type PButtonProps = {
@@ -114,12 +111,10 @@ export default function PButton({
     color
   )
 
-  const [theme] = useAtom(themeAtom)
-
   const mainClass = 'flex items-center justify-center rounded-md'
   const transitionClass = 'transition duration-200'
   const iconVisibilityClass = loading ? 'block' : 'hidden'
-  const iconColor = variant === 'solid' ? 'white' : color
+  const iconColor = variant !== 'solid' ? color : 'white'
 
   return (
     <button
