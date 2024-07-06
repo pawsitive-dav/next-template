@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import PButton from '../Ui/PButton'
+import DarkModeButton from '../Base/DarkModeButton'
+import LangSwitcher from '../Base/LangSwitcher'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -23,10 +25,10 @@ export default function Navbar() {
   }, [])
 
   const menuList = [
-    { name: 'Home', to: '#' },
-    { name: 'Way Us', to: '#' },
-    { name: 'Features', to: '#' },
-    { name: 'Pricing', to: '#' },
+    { name: 'Home', to: '/' },
+    { name: 'Way Us', to: 'about' },
+    { name: 'Features', to: '/' },
+    { name: 'Pricing', to: '/' },
   ]
 
   return (
@@ -46,7 +48,7 @@ export default function Navbar() {
             {menuList.map((item, index) => (
               <li key={index}>
                 <Link
-                  href={item.to}
+                  href={`/en/${item.to}`}
                   className={`${scrolled || 'text-white hover:text-white'} hover:text-primary`}
                 >
                   {item.name}
@@ -56,6 +58,8 @@ export default function Navbar() {
           </ul>
         </div>
         <div className='flex items-center space-x-2'>
+          <LangSwitcher />
+          <DarkModeButton />
           <PButton color='primary'>Sign In</PButton>
         </div>
       </div>

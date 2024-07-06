@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+import { useTranslations } from 'next-intl'
+
 import PButton from '@/app/components/Ui/PButton'
 import PIcon from '@/app/components/Ui/PIcon'
 
@@ -7,6 +9,8 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
+  const t = useTranslations('Home')
+
   const uiControl = {
     loading: true,
     disabled: false,
@@ -14,18 +18,22 @@ export default function Page() {
 
   return (
     <>
-      <section className='bg-blue-600 py-[120px]'>
+      <section className='bg-blue-600 py-[120px] text-white'>
         <div className='container flex flex-row space-x-6'>
           <div className='basis-1/2'>
-            <div className='flex space-x-4'>
+            <div className='text-title'>{t('title')}</div>
+            <div className='text-base text-soft'>{t('description')}</div>
+            <div className='flex space-x-4 mt-6'>
               <PButton color='primary'>Get Started</PButton>
               <PButton color='info' variant='outline'>
                 Free Try
               </PButton>
             </div>
           </div>
-          <div className='basis-1/2 bg-gray-300'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, maxime.
+          <div className='basis-1/2 '>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam autem accusamus,
+            expedita itaque molestiae illo perferendis excepturi, nostrum totam ad, sapiente quam
+            neque vitae natus distinctio incidunt illum accusantium eligendi.
           </div>
         </div>
       </section>

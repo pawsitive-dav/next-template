@@ -1,9 +1,12 @@
-import { NextResponse, NextRequest } from 'next/server'
+import createMiddleware from 'next-intl/middleware'
 
-export function middleware(request: NextRequest) {
-  return NextResponse.next()
-}
+const middleware = createMiddleware({
+  locales: ['en', 'th'],
+  defaultLocale: 'en',
+})
+
+export default middleware
 
 export const config = {
-  matcher: '/:path*',
+  matcher: ['/', '/(en|th)/:page*'],
 }
